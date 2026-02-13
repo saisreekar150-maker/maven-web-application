@@ -2,77 +2,114 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome to application page</title>
+    <title>Sreekar | DevOps Engineer</title>
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
         }
-        h1, h2 {
+
+        .header {
+            background-color: #1f2937;
+            color: white;
             text-align: center;
+            padding: 25px;
         }
+
+        .announcement {
+            background-color: #facc15;
+            color: black;
+            padding: 10px;
+            font-weight: bold;
+            margin-top: 10px;
+            border-radius: 6px;
+        }
+
+        .container {
+            padding: 30px;
+        }
+
         .section {
-            margin-top: 20px;
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
         }
-        hr {
-            border: 1px solid #999;
+
+        h1, h2 {
+            margin: 5px 0;
+        }
+
+        .contact a {
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #111827;
+            color: white;
         }
     </style>
 </head>
 
 <body>
 
-<h1>
-Hello world
-am sreekar  
-<br/>
-Bengaluru, Karnataka, India
-</h1>
+<div class="header">
+    <h1>Welcome to my world 🫡</h1>
+    <h2>Sreekar | AWS & Azure DevOps Engineer</h2>
+    <p>Happiness is not a chance, it's a choice</p>
 
-<h2>
-Hello all
-Am srikar good at AWS, Azure Devops with Terraform Automation IaC 
-let you know your potentiality
-</h2>
-
-<hr/>
-
-<div class="section">
-    <b>Server Side IP Address</b><br/><br/>
-    Server Host Name :: <%= request.getServerName() %><br/>
-    Server IP Address :: <%= request.getLocalAddr() %>
+    <div class="announcement">
+        🚀 GitHub Webhooks Demo - Let your past makes you Better, Not Bitter- JAI HIND 🇮🇳
+    </div>
 </div>
 
-<hr/>
+<div class="container">
 
-<div class="section">
-    <b>Client Side IP Address</b><br/><br/>
-    Client IP Address :: <%= request.getRemoteAddr() %><br/>
-    Client Name Host :: <%= request.getRemoteHost() %>
+    <div class="section">
+        <h2>About Me</h2>
+        <p>
+            Get experienced in AWS, Azure DevOps, Terraform, Infrastructure as Code (IaC),
+            CI/CD Pipelines, GitHub Webhooks Integration, and Automation.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Server Information</h2>
+        Server Host Name :: <%= request.getServerName() %><br/>
+        Server IP Address :: <%= request.getLocalAddr() %>
+    </div>
+
+    <div class="section">
+        <h2>Client Information</h2>
+        Client IP Address :: <%= request.getRemoteAddr() %><br/>
+        Client Host Name :: <%= request.getRemoteHost() %>
+    </div>
+
+    <div class="section contact">
+        <h2>Contact</h2>
+        <img src="images/logo.png" alt="Sreekar DevOps" width="120"/><br/><br/>
+        📞 +91-9160823466 <br/>
+        📧 sai.sreekar150@gmail.com <br/>
+        <a href="mailto:sai.sreekar150@gmail.com">Send Email</a>
+    </div>
+
+    <div class="section">
+        <h2>Services</h2>
+        <a href="employee">Get Employee Details</a>
+    </div>
+
 </div>
 
-<hr/>
-
-<div class="section">
-    <img src="images/logo.png" alt="Srikar AWS Devloper" width="120"/>
-    <br/><br/>
-    Srikar good at AWS and Azure DevOps
-    Bangalore  
-    <br/>
-    Ph: +91-9160823466 
-    <br/>
-    Email: sai.sreekar150@gmail.com
-    <br/>
-    <a href="mailto:sai.sreekar150@gmail.com">Mail to Sreekar</a>
-    
-</div>
-
-<hr/>
-
-<div class="section">
-    <b>Service :</b>
-    <a href="employee">Get Employee Details</a>
+<div class="footer">
+    © 2026 Sreekar | DevOps Engineer | Jai Hind 
 </div>
 
 </body>
 </html>
-
