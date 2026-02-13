@@ -17,7 +17,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	<sonar.host.url>http://3.6.94.6:9000</sonar.host.url>
+	<sonar.host.url>http://172.31.46.136:9000</sonar.host.url>
     </properties>
 
     <!-- Dependencies -->
@@ -52,11 +52,11 @@
     <distributionManagement>
         <snapshotRepository>
             <id>dbs-snapshot</id>
-	    <url>http://15.206.145.152:8081/repository/dbs-snapshot/</url>
+	    <url>http://172.31.37.104:8081/repository/dbs-snapshot/</url>
         </snapshotRepository>
         <repository>
             <id>dbs-release</id>
-            <url>http://15.206.145.152:8081/repository/dbs-release/</url>
+            <url>http://172.31.37.104:8081/repository/dbs-release/</url>
         </repository>
     </distributionManagement>
 
