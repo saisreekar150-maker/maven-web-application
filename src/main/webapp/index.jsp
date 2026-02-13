@@ -66,7 +66,7 @@
     <p>Happiness is not a chance, it's a choice</p>
 
     <div class="announcement">
-        🚀 GitHub Webhooks Demo - Let your past makes you Better, Not Bitter- JAI HIND 🇮🇳
+        🚀 Let your past makes you Better, Not Bitter- JAI HIND 🇮🇳
     </div>
 </div>
 
