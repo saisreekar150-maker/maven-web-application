@@ -1,1 +1,1 @@
-new application page has been deployed
+war file has deployed
