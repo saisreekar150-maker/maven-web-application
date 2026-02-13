@@ -5,26 +5,22 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.mithun</groupId>
+    <!-- Project Details -->
+    <groupId>com.dbs.app</groupId>
     <artifactId>mavenweb-app</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>Mithun Web Application</name>
+    <name>DBS Maven Web Application</name>
 
-    <!-- ================= PROPERTIES ================= -->
     <properties>
-        <java.version>11</java.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-
-        <!-- SONAR -->
-        <sonar.projectKey>mithun-maven-webapp</sonar.projectKey>
-        <sonar.projectName>Mithun Maven WebApp</sonar.projectName>
-        <sonar.host.url>http://13.234.202.39:9000</sonar.host.url>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<sonar.host.url>http://3.6.94.6:9000</sonar.host.url>
     </properties>
 
-    <!-- ================= DEPENDENCIES ================= -->
+    <!-- Dependencies -->
     <dependencies>
 
         <!-- Servlet API (Provided by Tomcat) -->
@@ -43,20 +39,31 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- JSTL (optional if using JSTL in JSP) -->
+        <dependency>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
     </dependencies>
 
-    <!-- ================= BUILD ================= -->
+    <!-- Nexus Repository Configuration -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>dbs-snapshot</id>
+	    <url>http://15.206.145.152:8081/repository/dbs-snapshot/</url>
+        </snapshotRepository>
+        <repository>
+            <id>dbs-release</id>
+            <url>http://15.206.145.152:8081/repository/dbs-release/</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <finalName>mavenweb-app</finalName>
 
         <plugins>
-
-            <!-- Java Compiler -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
-            </plugin>
 
             <!-- WAR Plugin -->
             <plugin>
@@ -68,7 +75,14 @@
                 </configuration>
             </plugin>
 
-            <!-- Sonar Plugin -->
+            <!-- Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+            </plugin>
+
+            <!-- Sonar Maven Plugin -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
@@ -77,35 +91,6 @@
 
         </plugins>
     </build>
-
-    <!-- ================= NEXUS REPOS ================= -->
-    <repositories>
-        <repository>
-            <id>nexus-releases</id>
-            <url>http://35.154.33.203:8081/repository/dbs-release/</url>
-        </repository>
-
-        <repository>
-            <id>nexus-snapshots</id>
-            <url>http://35.154.33.203:8081/repository/dbs-snapshot/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
-    <!-- ================= DEPLOY TO NEXUS ================= -->
-    <distributionManagement>
-        <repository>
-            <id>nexus-releases</id>
-            <url>http://35.154.33.203:8081/repository/dbs-release/</url>
-        </repository>
-
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <url>http://35.154.33.203:8081/repository/dbs-snapshot/</url>
-        </snapshotRepository>
-    </distributionManagement>
 
 </project>
 
