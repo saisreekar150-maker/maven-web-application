@@ -1,0 +1,53 @@
+node {
+
+    def mavenHome = tool name: "maven3.9.12"
+
+    try {
+
+        slackSend(
+            channel: '#build-notifications',
+            color: 'warning',
+            message: "🟡 STARTED: ${env.JOB_NAME} #${env.BUILD_NUMBER}\n${env.BUILD_URL}"
+        )
+
+        stage('CheckoutCode') {
+            git branch: 'development',
+                credentialsId: '758635c3-039f-4f36-ac7c-8fa9614e372e',
+                url: 'https://github.com/saisreekar150-maker/mavenweb-app.git'
+        }
+
+        stage('Build') {
+            sh "${mavenHome}/bin/mvn clean package"
+        }
+
+        stage('ExecuteSonarQube') {
+            sh "${mavenHome}/bin/mvn sonar:sonar -Dsonar.login=squ_1741cd5aaea60273ecac074f197154220cdf5cb7"
+        }
+
+        stage('UploadintoArtifact') {
+            sh "${mavenHome}/bin/mvn deploy"
+        }
+
+        stage('DeployAppintoTomcat') {
+            sshagent(['cc9daee4-dc4a-411a-a294-4aa75bac6e4d']) {
+                sh "scp -o StrictHostKeyChecking=no target/mavenweb-app.war ec2-user@172.31.1.71:/opt/apache-tomcat-9.0.115/webapps/"
+            }
+        }
+
+        slackSend(
+            channel: '#build-notifications',
+            color: 'good',
+            message: "🟢 SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}\n${env.BUILD_URL}"
+        )
+
+    } catch (Exception e) {
+
+        slackSend(
+            channel: '#build-notifications',
+            color: 'danger',
+            message: "🔴 FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}\n${env.BUILD_URL}"
+        )
+
+        throw e
+    }
+}
